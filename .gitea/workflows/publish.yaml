@@ -1,0 +1,30 @@
+name: Gitea Actions Demo
+run-name: ${{ gitea.actor }} is testing out Gitea Actions 🚀
+on:
+  push:
+    tags:
+      - "[0-9]+.[0-9]+.[0-9]+"
+
+jobs:
+  Explore-Gitea-Actions:
+    runs-on: ubuntu-pwsh
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '7.0.x'  # nebo '6.0.x', podle toho co potřebuješ
+      
+      - name: Get Version
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
+
+      - name: Puzblish to PS Gallery
+        env:
+          NUGET_KEY: ${{ secrets.GALLERY_API_KEY }}
+          BUILDVER: ${{ env.RELEASE_VERSION }}
+        shell: pwsh
+        run: | 
+          ./.scripts/publish.ps1
+          Publish-Module -path ./Abacus.Graph -NuGetApiKey $env:NUGET_KEY -Verbose
