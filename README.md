@@ -1,11 +1,11 @@
 # Abacus.Graph
 ![PowerShell](https://img.shields.io/badge/PowerShell-%235391FE.svg?style=for-the-badge&logo=powershell&logoColor=white)
 
-![](https://img.shields.io/gitea/v/tag/JonatanRek/AbacusPS?gitea_url=https://git.steelants.cz&sort=date)
-![PowerShell Gallery Downloads](https://img.shields.io/powershellgallery/dt/Abacus.Graph)
-![Gitea last commit](https://img.shields.io/gitea/last-commit/JonatanRek/AbacusPS?gitea_url=https://git.steelants.cz)
+![](https://img.shields.io/github/v/tag/gamerclassn7/abacus.graph?sort=date)
+![PowerShell Gallery Downloads](https://img.shields.io/powershellgallery/dt/abacus.Graph)
+![GitHub last commit](https://img.shields.io/github/last-commit/gamerclassn7/abacus.graph)
 
-Small yet powerful module for communication with Abacus/DESIGNA parking system over its WebService API from environment of PowerShell 7+.
+Small yet powerful module for communication with Abacus/DESIGNA (WinOperate) parking system over its WebService API from environment of PowerShell 7+.
 
 ### Connect to Service
 ```powershell
