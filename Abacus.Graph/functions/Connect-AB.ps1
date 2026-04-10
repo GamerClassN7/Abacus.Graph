@@ -10,7 +10,7 @@ function Connect-AB {
         [SecureString]$Password
     )
 
-    $plainPassword = $Password | ConvertFrom-SecureString -AsPlainText
+    $plainPassword = (ConvertFrom-SecureString -SecureString $Password -AsPlainText)
 
     # Verify connectivity via alive() before marking as connected.
     # Direct Invoke-RestMethod call — cannot go through Invoke-ABRequest yet
