@@ -1,20 +1,20 @@
 function Set-ABCarparkCounter {
     [CmdletBinding(SupportsShouldProcess)]
     param (
-        [int]$System = 1,
+        [int]$System = 0,
 
         [Parameter(Mandatory = $true)]
         [int]$CarparkNo,
 
-        [System.Nullable[int]]$MaxCarparkFullWithoutReservation = $null,
-        [System.Nullable[int]]$MaxCarparkFullWithReservation = $null,
-        [System.Nullable[int]]$ShortTermParker = $null,
-        [System.Nullable[int]]$SeasonParkerWithReservation = $null,
-        [System.Nullable[int]]$SeasonParkerWithoutReservation = $null,
-        [System.Nullable[int]]$DebitCardWithReservation = $null,
-        [System.Nullable[int]]$DebitCardWithoutReservation = $null,
-        [System.Nullable[int]]$CongressTicketWithReservation = $null,
-        [System.Nullable[int]]$CongressTicketWithoutReservation = $null
+        [int]$MaxCarparkFullWithoutReservation = 0,
+        [int]$MaxCarparkFullWithReservation = 0,
+        [int]$ShortTermParker = 0,
+        [int]$SeasonParkerWithReservation = 0,
+        [int]$SeasonParkerWithoutReservation = 0,
+        [int]$DebitCardWithReservation = 0,
+        [int]$DebitCardWithoutReservation = 0,
+        [int]$CongressTicketWithReservation = 0,
+        [int]$CongressTicketWithoutReservation = 0
     )
 
     if ($PSCmdlet.ShouldProcess("Carpark $CarparkNo (System $System)", "SetCarparkCounter")) {
