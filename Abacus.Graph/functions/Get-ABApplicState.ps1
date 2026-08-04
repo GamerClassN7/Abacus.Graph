@@ -22,6 +22,8 @@ function Get-ABApplicState {
             InService             = [int]$s.InService
             IsOnline              = [int]$s.IsOnline
             IsBarrierOn           = [int]$s.IsBarrierOn
+            # Průjezd bez kontroly (commands 664/665) – závora trvale nahoře
+            IsAutoBarrierOn       = [int]$s.IsAutoBarrierOn
             IsBlacklistCheckOn    = [int]$s.IsBlacklistCheckOn
             IsIoCheckOn           = [int]$s.IsIoCheckOn
             IsBarrierUp           = [int]$s.IsBarrierUp

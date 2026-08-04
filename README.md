@@ -115,6 +115,7 @@ InService      : True
 IsOnline       : True
 IsBarrierUp    : False
 IsBarrierOn    : True
+IsAutoBarrierOn: False   # průjezd bez kontroly (commands 664/665)
 ...
 ```
 
