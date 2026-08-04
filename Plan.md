@@ -13,7 +13,7 @@ AbacusAPIBridge momentálně volá Abacus WebService přímo z `app.ps1` bez ž�
 /home/jonatanrek/WORK/_GIT/AbacusPS/
 └── Abacus.Graph/
     ├── Abacus.Graph.psd1          # Manifest modulu
-    ├── Abacus.Graph.psm1          # Root loader (identický pattern jako Cityline.Graph.psm1)
+    ├── Abacus.Graph.psm1          # Root loader (identický pattern jako Abacus.Graph.psm1)
     └── functions/
         ├── Connect-AB.ps1
         ├── Disconnect-AB.ps1
@@ -27,7 +27,7 @@ AbacusAPIBridge momentálně volá Abacus WebService přímo z `app.ps1` bez ž�
 ```
 
 ### Abacus.Graph.psm1
-Identický se `Cityline.Graph/Cityline.Graph.psm1` — načte všechny `.ps1` z `functions/`, přeskočí `dev_*` a `dep_*`, exportuje funkce.
+Identický se `Abacus.Graph/Abacus.Graph.psm1` — načte všechny `.ps1` z `functions/`, přeskočí `dev_*` a `dep_*`, exportuje funkce.
 
 Scope proměnné modulu:
 - `$script:Uri` — base URL (`http://.../AbacusWebService`)
@@ -36,7 +36,7 @@ Scope proměnné modulu:
 - `$script:isConnected` — Bool
 
 ### Abacus.Graph.psd1
-Kopie struktury z `Cityline.Graph.psd1` s:
+Kopie struktury z `Abacus.Graph.psd1` s:
 - `RootModule = 'Abacus.Graph.psm1'`
 - `GUID` = nový
 - `Author = 'JonatanRek'`
