@@ -1,6 +1,6 @@
 function Get-ABCarparkCounter {
     param (
-        [int]$System = 1,
+        [int]$System = 0,
 
         [Parameter(Mandatory = $true)]
         [int]$CarparkNo

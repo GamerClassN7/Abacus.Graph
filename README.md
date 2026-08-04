@@ -146,6 +146,7 @@ Command reference:
 | 138     | Deactivate I/O-check          |
 | 139     | Activate blacklist-check      |
 | 140     | Deactivate blacklist-check    |
+| 849     | Set lane counters             |
 
 ---
 
