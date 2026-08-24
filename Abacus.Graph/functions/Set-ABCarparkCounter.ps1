@@ -6,19 +6,19 @@ function Set-ABCarparkCounter {
         [Parameter(Mandatory = $true)]
         [int]$CarparkNo,
 
-        [int]$MaxCarparkFullWithoutReservation = 0,
-        [int]$MaxCarparkFullWithReservation = 0,
-        [int]$ShortTermParker = 0,
-        [int]$SeasonParkerWithReservation = 0,
-        [int]$SeasonParkerWithoutReservation = 0,
-        [int]$DebitCardWithReservation = 0,
-        [int]$DebitCardWithoutReservation = 0,
-        [int]$CongressTicketWithReservation = 0,
-        [int]$CongressTicketWithoutReservation = 0
+        [int]$MaxCarparkFullWithoutReservation = -1,
+        [int]$MaxCarparkFullWithReservation = -1,
+        [int]$ShortTermParker = -1,
+        [int]$SeasonParkerWithReservation = -1,
+        [int]$SeasonParkerWithoutReservation = -1,
+        [int]$DebitCardWithReservation = -1,
+        [int]$DebitCardWithoutReservation = -1,
+        [int]$CongressTicketWithReservation = -1,
+        [int]$CongressTicketWithoutReservation = -1
     )
 
     if ($PSCmdlet.ShouldProcess("Carpark $CarparkNo (System $System)", "SetCarparkCounter")) {
-        return Invoke-ABRequest -Service 'ServiceSystem' -Method 'setCarparkCounter' -Body @{
+        $result = Invoke-ABRequest -Service 'ServiceSystem' -Method 'setCarparkCounter' -Body @{
             system                           = $System
             carparkNo                        = $CarparkNo
             maxCarparkFullWithoutReservation = $MaxCarparkFullWithoutReservation
@@ -31,5 +31,11 @@ function Set-ABCarparkCounter {
             congressTicketWithReservation    = $CongressTicketWithReservation
             congressTicketWithoutReservation = $CongressTicketWithoutReservation
         }
+        if ($null -eq $result) { return $false }
+
+        $value = $result
+        if ($value -is [System.Xml.XmlDocument]) { $value = $value.DocumentElement.InnerText }
+        elseif ($value -is [System.Xml.XmlElement]) { $value = $value.InnerText }
+        return [System.Convert]::ToBoolean([string]$value)
     }
 }
