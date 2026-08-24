@@ -1,5 +1,24 @@
 function Set-ABCarparkCounter {
+    <#
+    .SYNOPSIS
+        Sets carpark counter values via the Abacus/DESIGNA setCarparkCounter endpoint.
+
+    .DESCRIPTION
+        Wraps ServiceSystem/setCarparkCounter. Any counter parameter left at its
+        default (-1) is not sent as a change - the server keeps its current value.
+        Passing 0 explicitly zeroes that counter out.
+        Source: PM_ABACUS_WebService_Interface, 5.10 setCarparkCounter().
+
+    .EXAMPLE
+        # Set only ShortTermParker, leave every other counter unchanged
+        Set-ABCarparkCounter -CarparkNo 0 -ShortTermParker 70
+
+    .OUTPUTS
+        [bool] - $true if the server confirmed the update, $false on failure
+        (no connection, HTTP error, or setCarparkCounterResult = false).
+    #>
     [CmdletBinding(SupportsShouldProcess)]
+    [OutputType([bool])]
     param (
         [int]$System = 0,
 
